@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//biubi.cn">
-  <title>测试 | SherryWu的博客</title>
+  <title>微信小程序搜索关键词高亮 | SherryWu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个善良的人">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
+  <meta name="description" content="如有转载，请注明出处。 说明代码实现把高亮部分的代码写在模板中（template），以便在不同地方都可以调用 template：12345&amp;lt;template name=&quot;highlight&quot;&amp;gt;  &amp;lt;block wx:for=&quot;&amp;#123;&amp;#123;util.formatSearchRes(str, key)&amp;#125;&amp;#125;&quot; wx:for-item=&quot;h&quot; wx:for">
+<meta name="keywords" content="微信小程序,高亮">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="//biubi.cn/2018/07/10/test/index.html">
+<meta property="og:title" content="微信小程序搜索关键词高亮">
+<meta property="og:url" content="//biubi.cn/2018/07/10/highlight/index.html">
 <meta property="og:site_name" content="SherryWu的博客">
-<meta property="og:description" content="一个善良的人">
+<meta property="og:description" content="如有转载，请注明出处。 说明代码实现把高亮部分的代码写在模板中（template），以便在不同地方都可以调用 template：12345&amp;lt;template name=&quot;highlight&quot;&amp;gt;  &amp;lt;block wx:for=&quot;&amp;#123;&amp;#123;util.formatSearchRes(str, key)&amp;#125;&amp;#125;&quot; wx:for-item=&quot;h&quot; wx:for">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-10T05:50:34.845Z">
+<meta property="og:image" content="//biubi.cn/assets/blogImg/highlight.jpeg">
+<meta property="og:updated_time" content="2018-07-10T07:27:43.443Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="测试">
-<meta name="twitter:description" content="一个善良的人">
+<meta name="twitter:title" content="微信小程序搜索关键词高亮">
+<meta name="twitter:description" content="如有转载，请注明出处。 说明代码实现把高亮部分的代码写在模板中（template），以便在不同地方都可以调用 template：12345&amp;lt;template name=&quot;highlight&quot;&amp;gt;  &amp;lt;block wx:for=&quot;&amp;#123;&amp;#123;util.formatSearchRes(str, key)&amp;#125;&amp;#125;&quot; wx:for-item=&quot;h&quot; wx:for">
+<meta name="twitter:image" content="//biubi.cn/assets/blogImg/highlight.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="SherryWu的博客" type="application/atom+xml">
   
@@ -145,19 +147,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-test" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-highlight" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      测试
+      微信小程序搜索关键词高亮
     </h1>
   
 
         
-        <a href="/2018/07/10/test/" class="archive-article-date">
+        <a href="/2018/07/10/highlight/" class="archive-article-date">
   	<time datetime="2018-07-10T05:43:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-10</time>
 </a>
         
@@ -165,90 +167,39 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
+        <p><font size="1"><strong>如有转载，请注明出处。</strong></font></p>
+<h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><p>把高亮部分的代码写在模板中（template），以便在不同地方都可以调用</p>
+<p>template：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">name</span>=<span class="string">"highlight"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">block</span> <span class="attr">wx:for</span>=<span class="string">"&#123;&#123;util.formatSearchRes(str, key)&#125;&#125;"</span> <span class="attr">wx:for-item</span>=<span class="string">"h"</span> <span class="attr">wx:for-index</span>=<span class="string">"hIdx"</span> <span class="attr">wx:key</span>=<span class="string">"&#123;&#123;hIdx&#125;&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">text</span> <span class="attr">class</span>=<span class="string">"&#123;&#123;h == util.trim(key) ? 'highlight' : '' &#125;&#125;"</span>&gt;</span>&#123;&#123;h&#125;&#125;<span class="tag">&lt;/<span class="name">text</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">block</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>wxs: (util.formatSearchRes)<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> formatSearchRes = <span class="function"><span class="keyword">function</span> (<span class="params">str, key</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> keyWord = <span class="string">''</span>;</span><br><span class="line">  <span class="keyword">if</span> (key) keyWord = trim(key);  <span class="comment">// 去除首尾空格</span></span><br><span class="line">  <span class="keyword">return</span> keyWord ? str.replace(getRegExp(keyWord, <span class="string">'g'</span>), <span class="string">'%%'</span> + keyWord + <span class="string">'%%'</span>).split(<span class="string">'%%'</span>) : str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在搜索结果页面调用模板：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">import</span> <span class="attr">src</span>=<span class="string">"../template/highlight.wxml"</span> /&gt;</span></span><br><span class="line"><span class="comment">&lt;!--str为需要对比的字符串；key为搜索关键词（例如：战争世界）--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span> <span class="attr">is</span>=<span class="string">'highlight'</span> <span class="attr">data</span>=<span class="string">"&#123;&#123;str:ar.name, key: searchValue &#125;&#125;"</span> /&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h3><p><img width="375" src="/assets/blogImg/highlight.jpeg"></p>
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
+
       
     </div>
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">微信小程序</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高亮</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
       
 
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://biubi.cn/2018/07/10/test/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
@@ -256,16 +207,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/2018/07/09/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -299,7 +240,7 @@
 <script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "//biubi.cn/2018/07/10/test/",
+  id: "//biubi.cn/2018/07/10/highlight/",
   owner: 'SherryMua',
   repo: 'SherryMua.github.io',
   oauth: {
@@ -335,7 +276,7 @@ gitment.render('gitment-ctn')
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: false,
